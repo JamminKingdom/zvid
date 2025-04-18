@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -38,6 +38,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Walkable
+    uniqueID: 1397186299
+    locked: 0
+  - name: Buildings
+    uniqueID: 3589545291
+    locked: 0
+  - name: Ornament
+    uniqueID: 2374018135
+    locked: 0
+  - name: Enemy
+    uniqueID: 1689450541
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  m_RenderingLayers:
+  - Default
