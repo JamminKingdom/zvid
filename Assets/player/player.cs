@@ -1,13 +1,27 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public GameObject play;
     public float Speed = 1f;
+    public SpriteRenderer sp;
 
-    private Vector3 dir;
-    private void Update()
+    public Rigidbody2D rb;
+    
+    private Vector2 dir;
+
+    private Animator anim;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
+    }
+
+    private void FixedUpdate()
     {
         Move();
     }
@@ -18,7 +32,28 @@ public class Player : MonoBehaviour
 
         var v = Input.GetAxisRaw("Vertical");
 
-        dir = new Vector3(h, v, 0f);
-        transform.position += Speed * Time.deltaTime * dir;
+        dir = new Vector2(h, v);
+        
+        rb.MovePosition(rb.position + Speed * Time.deltaTime * dir);
+
+        if (dir == Vector2.zero)
+        {
+            anim.SetBool("player", false);
+        }
+
+        if (dir != Vector2.zero)
+        {
+            anim.SetBool("player", true);
+        }
+
+        if (h < 0)
+        {
+            sp.flipX = true;
+        }
+
+        else
+        {
+            sp.flipX = false;
+        }
     }
 }
