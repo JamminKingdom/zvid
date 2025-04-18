@@ -5,14 +5,9 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    public InventoryUi inventory;
+    
     [SerializeField] 
-    
-    public Inventory inventory;
-    
-    // public bool IsUsed = false;
-    
-    // public int index = 0;
-    
     private ItemData[] itemList = new ItemData[15];
     
     public void Add(ItemType type, int amount)
@@ -22,6 +17,9 @@ public class ItemManager : MonoBehaviour
             if (itemList[i].type == type)
             {
                 itemList[i].amount += amount;
+
+                inventory.ItemLook(itemList[i].type, itemList[i].amount, itemList[i].index);
+                
                 return;
             }
             
@@ -39,6 +37,8 @@ public class ItemManager : MonoBehaviour
                 
                 itemList[i] = itemData;
                 
+                inventory.ItemLook(itemList[i].type, itemList[i].amount, itemList[i].index);
+                
                 return;
             }
         }
@@ -53,13 +53,12 @@ public class ItemManager : MonoBehaviour
                 itemList[i].amount--;
                 // IsUsed = true;
                 // index = itemList[i].index;
+                inventory.ItemLook(itemList[i].type, itemList[i].amount, itemList[i].index);
 
                 if (itemList[i].amount <= 0)
                 {
                     itemList[i].type = ItemType.None;
                     itemList[i].amount = 0;
-                    
-                    inventory.DeleteItem(itemList[i].index);
                 }
 
                 return;

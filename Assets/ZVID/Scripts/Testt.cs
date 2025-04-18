@@ -25,6 +25,26 @@ public class Testt : MonoBehaviour
         {
             im.Add(ItemType.HealPotion, 1);
         }
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            im.Add(ItemType.CurePotion, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            im.Add(ItemType.CurePotion, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            im.Add(ItemType.SmallDrink, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            im.Add(ItemType.SmallFood, 1);
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -39,6 +59,21 @@ public class Testt : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             im.Use(ItemType.HealPotion);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            im.Use(ItemType.CurePotion);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            im.Use(ItemType.SmallFood);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            im.Use(ItemType.SmallDrink);
         }
     }
 }
