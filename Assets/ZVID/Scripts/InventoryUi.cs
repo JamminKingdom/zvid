@@ -18,14 +18,14 @@ public class InventoryUi : MonoBehaviour
     [SerializeField] 
     private CanvasGroup canvasgroup;
     
-    private bool inventoryOpen;
+    public static bool inventoryOpen;
     
-    private float currentTime = 0f;
+    private float currentTime;
+    
+    public ItemManager itemManager;
 
     private void Start()
     {
-        // canvasgroup = GetComponent<CanvasGroup>();
-        
         inventoryOpen = false;
         canvasgroup.alpha = 0f;
     }
@@ -34,7 +34,7 @@ public class InventoryUi : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I) && !inventoryOpen)
         {
-            Debug.Log("Inventory Open");
+            // Debug.Log("Inventory Open");
             canvasgroup.alpha = 1f;
             currentTime = Time.timeScale;
             Time.timeScale = 0f;
@@ -44,12 +44,18 @@ public class InventoryUi : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I) && inventoryOpen)
         {
-            Debug.Log("Inventory Close");
+            // Debug.Log("Inventory Close");
             canvasgroup.alpha = 0f;
             Time.timeScale = currentTime;
             inventoryOpen = false;
             return;
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && inventoryOpen && Slot.isSelected)
+        {
+            itemManager.Use(int.Parse(Slot.slot.name));
+        }
+        
     }
 
     public void ItemLook(ItemType type, int amount, int index)
