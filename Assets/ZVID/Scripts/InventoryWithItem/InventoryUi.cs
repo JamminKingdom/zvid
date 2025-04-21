@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class InventoryUi : MonoBehaviour
@@ -14,6 +15,12 @@ public class InventoryUi : MonoBehaviour
     
     [SerializeField] 
     private CanvasGroup canvasgroup;
+    
+    public TextMeshProUGUI discriptionText;
+    
+    public TextMeshProUGUI nameText;
+    
+    public Image itemImage;
     
     public static bool inventoryOpen;
     
@@ -52,8 +59,42 @@ public class InventoryUi : MonoBehaviour
         {
             itemManager.Use(int.Parse(Slot.slot.name));
         }
-        
+
+
+
+        if (!Slot.slot)
+        {
+            discriptionText.text = "";
+            nameText.text = "";
+            itemImage.sprite = itemManager.itemData[0].sprite;
+        }
+        else
+        {
+            int type = itemManager.presentType(int.Parse(Slot.slot.name));
+            
+            discriptionText.text = itemManager.itemData[type].description;
+            nameText.text = itemManager.itemData[type].name;
+            itemImage.sprite = itemManager.itemData[type].sprite;
+        }
+
     }
+
+    // public void Info(ItemType type)
+    // {
+    //     if (!Slot.slot)
+    //     {
+    //         discriptionText.text = "";
+    //         nameText.text = "";
+    //         itemImage.sprite = itemManager.itemData[0].sprite;
+    //     }
+    //     else
+    //     {
+    //         discriptionText.text = itemManager.itemData[(int)type].description;
+    //         nameText.text = itemManager.itemData[(int)type].name;
+    //         itemImage.sprite = itemManager.itemData[0].sprite;
+    //     }
+    //
+    // }
 
     public void ItemLook(ItemType type, int amount, int index)
     {

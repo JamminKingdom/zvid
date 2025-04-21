@@ -73,5 +73,10 @@ public class ItemManager : MonoBehaviour
         Debug.Log(itemData[(int)type].value);
         
     }
+
+    public int presentType(int index)
+    {
+        return (int) itemList[index].type;
+    }
 }
 

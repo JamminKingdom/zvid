@@ -7,8 +7,6 @@ public class Slot : MonoBehaviour
     public Image image;
     
     public static Slot slot;
-
-    public static int slotType;
     
     public static bool isSelected;
     
@@ -38,14 +36,12 @@ public class Slot : MonoBehaviour
         if (slot == this)
         {
             slot = null;
-            slotType = 0;
         }
         else
         {
             image.color = new Color(1f, 1f, 1f, 1f);
             isSelected = true;
-            slot = this;
-            slotType = 1;
+            slot = this; 
         }
     }
 
