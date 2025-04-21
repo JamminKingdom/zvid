@@ -8,7 +8,7 @@ public class EnemyChase : MonoBehaviour
     private Rigidbody2D _rb;
     private EnemyData _data;
     
-    private readonly float speedAccelerationRate = 0.00001f;
+    private readonly float speedAccelerationRate = 100000f;
     private readonly float minSpeed = 0.1f;
     private readonly float maxSpeed = 5f;
     
@@ -20,7 +20,7 @@ public class EnemyChase : MonoBehaviour
 
     private void Update()
     {
-        moveSpeed = Mathf.Clamp(moveSpeed + TimeManager.Instance.ElapsedTime * speedAccelerationRate, minSpeed, maxSpeed);
+        moveSpeed = Mathf.Clamp(moveSpeed + TimeManager.Instance.ElapsedTime / speedAccelerationRate, minSpeed, maxSpeed);
     }
 
     private void FixedUpdate()

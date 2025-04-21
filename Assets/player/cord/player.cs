@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+    
     public GameObject play;
     public float Speed = 5f;
     private SpriteRenderer sp;
@@ -13,6 +14,18 @@ public class Player : MonoBehaviour
     private Vector2 dir;
 
     private Animator anim;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {

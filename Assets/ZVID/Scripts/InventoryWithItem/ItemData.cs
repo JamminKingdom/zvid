@@ -8,6 +8,7 @@ public class ItemData
     public string name;
     public string description;
     public int value;
+    public int weight;
     public int amount;
     public Sprite sprite;
     

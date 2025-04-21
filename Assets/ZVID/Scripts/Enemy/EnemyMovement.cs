@@ -3,6 +3,11 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject shootingPoint;
+    [SerializeField]
+    private GameObject projectilePrefab;
+    
     private Rigidbody2D _rb;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
@@ -51,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
 
         _animator.SetBool(HashIsWalking, _data.isWalking);
         
-        if (_data.dirVec.sqrMagnitude < _data.attackRangeSqr)
+        if (_state == EnemyState.Chase && _data.dirVec.sqrMagnitude < _data.attackRangeSqr)
         {
             Attack();
             return;
@@ -71,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
         
         if (_data.dirVec.sqrMagnitude < _data.detectionRangeSqr)
         {
-            _state = EnemyState.Chase;
+            _state = EnemyState.Chase; 
             _chase.enabled = true;
         }
         else
@@ -92,16 +97,34 @@ public class EnemyMovement : MonoBehaviour
     {
         _animator.SetTrigger(HashAttack);
         
+        FireProjectile();
+        
         _chase.enabled = false;
         _rb.bodyType = RigidbodyType2D.Kinematic;
         _state = EnemyState.Attack;
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
 
         _rb.bodyType = RigidbodyType2D.Dynamic;
         _state = EnemyState.Idle;
     }
+    
+    private void FireProjectile()
+    {
+        GameObject projGo = Instantiate(
+            projectilePrefab,
+            shootingPoint.transform.position,
+            shootingPoint.transform.rotation
+        );
 
+        EnemyProjectile proj = projGo.GetComponent<EnemyProjectile>();
+        if (proj != null)
+        {
+            int damage = _data.attackDamage;  
+            proj.Shot(damage, _data.dirVec);
+        }
+    }
+    
     private void OnHit(int damage = 0)
     {
         StopAllCoroutines();
@@ -139,9 +162,9 @@ public class EnemyMovement : MonoBehaviour
         _collider.enabled = false;
         _state = EnemyState.Dead;
         
-        yield return new WaitForSeconds(0.5f);
-
-        Destroy(gameObject, 2f);
+        yield return new WaitForSeconds(2f);
         
+        SpawnManager.Instance.SpawnRandomItem(transform);
+        Destroy(gameObject);
     }
 }

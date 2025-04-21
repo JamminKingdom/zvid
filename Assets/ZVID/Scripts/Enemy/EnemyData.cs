@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EnemyData : MonoBehaviour
@@ -7,8 +6,7 @@ public class EnemyData : MonoBehaviour
 
     [HideInInspector]
     public int MaxHp = 50;
-        
-    [HideInInspector]
+    
     public int Hp
     {
         get => _hp;
@@ -23,7 +21,8 @@ public class EnemyData : MonoBehaviour
         }
     }
     private int _hp;
-    
+    [HideInInspector]
+    public int attackDamage = 10;
     [HideInInspector]
     public float knockbackForce = 10f;
     [HideInInspector]
@@ -33,7 +32,7 @@ public class EnemyData : MonoBehaviour
     [HideInInspector]
     public float detectionRangeSqr = 30f;
     [HideInInspector]
-    public float attackRangeSqr = 1f;
+    public float attackRangeSqr = 15f;
     [HideInInspector]
     public Vector2 dirVec;
 
