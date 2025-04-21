@@ -79,23 +79,6 @@ public class InventoryUi : MonoBehaviour
 
     }
 
-    // public void Info(ItemType type)
-    // {
-    //     if (!Slot.slot)
-    //     {
-    //         discriptionText.text = "";
-    //         nameText.text = "";
-    //         itemImage.sprite = itemManager.itemData[0].sprite;
-    //     }
-    //     else
-    //     {
-    //         discriptionText.text = itemManager.itemData[(int)type].description;
-    //         nameText.text = itemManager.itemData[(int)type].name;
-    //         itemImage.sprite = itemManager.itemData[0].sprite;
-    //     }
-    //
-    // }
-
     public void ItemLook(ItemType type, int amount, int index)
     {
         // Debug.Log($"ItemLock {type} {amount} {index}");
@@ -111,9 +94,5 @@ public class InventoryUi : MonoBehaviour
         }
         
     }
-    
-    
-   
-    
 }
     
