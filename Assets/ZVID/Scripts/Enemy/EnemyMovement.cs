@@ -74,6 +74,10 @@ public class EnemyMovement : MonoBehaviour
             _state = EnemyState.Chase;
             _chase.enabled = true;
         }
+        else
+        {
+            _chase.enabled = false;
+        }
     }
     
     private void Attack()

@@ -3,6 +3,7 @@ using UnityEngine;
 public class test : MonoBehaviour
 {
     public EnemyMovement enemyMovement;
+    
     private Rigidbody2D rb;
     private Vector2 targetVelocity;
     private float moveSpeed = 5f;
@@ -23,6 +24,11 @@ public class test : MonoBehaviour
         
         targetVelocity = inputVector * moveSpeed;
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            enemyMovement.TakeDamage(10);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Q))
         {
             enemyMovement.TakeDamage(10);
