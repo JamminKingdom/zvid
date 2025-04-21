@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 0afd32d05dca90945951139cc882559c
+guid: f11826caa71b6924694c38b5d982052f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4610883208819159003
-    second: energy_bar_resized_0
-  - first:
-      213: -4142080955843816053
-    second: energy_bar_resized_1
+      213: 7611873564423880030
+    second: milk_chocolate_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: energy_bar_resized_0
+      name: milk_chocolate_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 11
+        x: 1
+        y: 6
         width: 30
-        height: 16
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bdfaa7259d52dff30800000000000000
-      internalID: 4610883208819159003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: energy_bar_resized_1
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 5
-        width: 24
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b85d40cf05f5486c0800000000000000
-      internalID: -4142080955843816053
+      spriteID: e5dfbaa6daec2a960800000000000000
+      internalID: 7611873564423880030
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      energy_bar_resized_0: 4610883208819159003
-      energy_bar_resized_1: -4142080955843816053
+      milk_chocolate_0: 7611873564423880030
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
