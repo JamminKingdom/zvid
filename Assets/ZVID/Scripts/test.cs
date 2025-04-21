@@ -25,7 +25,7 @@ public class test : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            enemyMovement.OnHit();
+            enemyMovement.TakeDamage(10);
         }
     }
 

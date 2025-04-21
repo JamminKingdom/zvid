@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
+    private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
     private EnemyData _data;
@@ -14,10 +15,28 @@ public class EnemyMovement : MonoBehaviour
     private readonly int HashIsWalking = Animator.StringToHash("IsWalking");
     private readonly int HashAttack = Animator.StringToHash("Attack");
     private readonly int HashHit = Animator.StringToHash("Hit");
+    private readonly int HashDead = Animator.StringToHash("Dead");
+    
+    public void TakeDamage(int damage)
+    {
+        if (_state == EnemyState.Hit) return;
+        if (_state == EnemyState.Dead) return;
+
+        _data.Hp -= damage;
+
+        if (_data.Hp == 0)
+        {
+            Dead();
+            return;
+        }
+        
+        OnHit(damage);
+    }
     
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<Collider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _data = GetComponent<EnemyData>();
@@ -27,6 +46,8 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         if (_state == EnemyState.Hit) return;
+        if (_state == EnemyState.Attack) return;
+        if (_state == EnemyState.Dead) return;
 
         _animator.SetBool(HashIsWalking, _data.isWalking);
         
@@ -46,6 +67,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_state == EnemyState.Hit) return;
         if (_state == EnemyState.Attack) return;
+        if (_state == EnemyState.Dead) return;
         
         if (_data.dirVec.sqrMagnitude < _data.detectionRangeSqr)
         {
@@ -56,6 +78,8 @@ public class EnemyMovement : MonoBehaviour
     
     private void Attack()
     {
+        if (_state == EnemyState.Attack) return;
+        
         StopAllCoroutines();
         StartCoroutine(AttackProcess());
     }
@@ -74,7 +98,7 @@ public class EnemyMovement : MonoBehaviour
         _state = EnemyState.Idle;
     }
 
-    public void OnHit(int damage = 0)
+    private void OnHit(int damage = 0)
     {
         StopAllCoroutines();
         StartCoroutine(HitProcess());
@@ -92,5 +116,27 @@ public class EnemyMovement : MonoBehaviour
 
         _rb.bodyType = RigidbodyType2D.Dynamic;
         _state = EnemyState.Idle;
+    }
+    
+    private void Dead()
+    {
+        if (_state == EnemyState.Dead) return;
+        
+        StopAllCoroutines();
+        StartCoroutine(DeadProcess());
+    }
+    
+    private IEnumerator DeadProcess()
+    {
+        _animator.SetTrigger(HashDead);
+        
+        _chase.enabled = false;
+        _rb.simulated = false;
+        _collider.enabled = false;
+        _state = EnemyState.Dead;
+        
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(gameObject, 2f);
     }
 }
