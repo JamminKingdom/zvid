@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class InventoryUi : MonoBehaviour
 {
     [SerializeField] 
-    private Sprite[] itemSprites;
-    
-    [SerializeField] 
     private Image[] items;
 
     [SerializeField] 
@@ -62,17 +59,20 @@ public class InventoryUi : MonoBehaviour
     {
         // Debug.Log($"ItemLock {type} {amount} {index}");
         
-        items[index].sprite = itemSprites[(int)type];
+        items[index].sprite = itemManager.itemData[(int)type].sprite;
         
         count[index].text = amount.ToString();
         
         if (amount <= 0)
         {
             count[index].text = "";
-            items[index].sprite = itemSprites[0];
+            items[index].sprite = itemManager.itemData[0].sprite;
         }
         
     }
+    
+    
+   
     
 }
     
