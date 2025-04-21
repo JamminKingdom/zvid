@@ -1,17 +1,34 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Testt : MonoBehaviour
 {
     public ItemManager im;
+    
+    public GameObject itemPrefab;
+
+    public Transform[] itemSpawnPoints;
+    
     void Start()
     {
         
     }
 
+    public void ItemSpawn(ItemType type, Vector3 position)
+    {
+        //GameObject itemGameObject = Instantiate(itemPrefab, position, Quaternion.identity);
+        Instantiate(itemPrefab, position, Quaternion.identity);
+    }
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            ItemSpawn(ItemType.HealPotion, itemSpawnPoints[0].position);
+            
+            // Item item = itemGameObject.GetComponent<Item>();
+            // item.Show();
+            
             im.Add(ItemType.LargeFood, 1);
         }
 
