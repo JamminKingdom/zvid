@@ -38,10 +38,10 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnProcess());
+        StartCoroutine(SpawnEnemyProcess());
     }
 
-    private IEnumerator SpawnProcess()
+    private IEnumerator SpawnEnemyProcess()
     {
         while (true)
         {
@@ -55,7 +55,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public void SpawnRandomEnemy()
+    private void SpawnRandomEnemy()
     {
         if (_validCells.Count == 0) return;
 
@@ -63,5 +63,10 @@ public class SpawnManager : MonoBehaviour
         var worldPos = groundTilemap.CellToWorld(cell) + groundTilemap.cellSize * 0.5f;
 
         Instantiate(enemyPrefab, worldPos, Quaternion.identity);
+    }
+
+    public void SpawnRandomItem(Transform spawnPoint)
+    {
+        
     }
 }
