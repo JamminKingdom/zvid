@@ -14,17 +14,17 @@ public class Testt : MonoBehaviour
         
     }
 
-    public void ItemSpawn(ItemType type, Vector3 position)
-    {
-        //GameObject itemGameObject = Instantiate(itemPrefab, position, Quaternion.identity);
-        Instantiate(itemPrefab, position, Quaternion.identity);
-    }
+    // public void ItemSpawn(ItemType type, Vector3 position)
+    // {
+    //     //GameObject itemGameObject = Instantiate(itemPrefab, position, Quaternion.identity);
+    //     Instantiate(itemPrefab, position, Quaternion.identity);
+    // }
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ItemSpawn(ItemType.HealPotion, itemSpawnPoints[0].position);
+            // ItemSpawn(ItemType.HealPotion, itemSpawnPoints[0].position);
             
             // Item item = itemGameObject.GetComponent<Item>();
             // item.Show();
