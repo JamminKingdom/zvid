@@ -45,7 +45,7 @@ public class ItemManager : MonoBehaviour
 
     public void Use(int index)
     {
-        Debug.Log($"사용 {itemList[index].type}");
+        // Debug.Log($"사용 {itemList[index].type}");
         
         if (itemList[index].type == ItemType.None)
         {
