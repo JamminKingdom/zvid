@@ -7,7 +7,7 @@ public class ItemManager : MonoBehaviour
 {
     public InventoryUi inventory;
 
-    [SerializeField] private ItemData[] itemList = new ItemData[15];
+    [SerializeField] private InventoryData[] itemList = new InventoryData[15];
 
     public void Add(ItemType type, int amount)
     {
@@ -28,13 +28,13 @@ public class ItemManager : MonoBehaviour
         {
             if (itemList[i].type == ItemType.None)
             {
-                ItemData itemData = new ItemData();
+                InventoryData inventoryData = new InventoryData();
 
-                itemData.type = type;
-                itemData.amount = amount;
-                itemData.index = i;
+                inventoryData.type = type;
+                inventoryData.amount = amount;
+                inventoryData.index = i;
 
-                itemList[i] = itemData;
+                itemList[i] = inventoryData;
 
                 inventory.ItemLook(itemList[i].type, itemList[i].amount, itemList[i].index);
 
