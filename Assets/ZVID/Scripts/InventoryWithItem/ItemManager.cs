@@ -7,15 +7,17 @@ public class ItemManager : MonoBehaviour
 {
     public InventoryUi inventory;
 
+    public ItemData[] itemData = new ItemData[7];
+
     [SerializeField] private InventoryData[] itemList = new InventoryData[15];
 
-    public void Add(ItemType type, int amount)
+    public void Add(ItemType type)
     {
         for (int i = 0; i < itemList.Length; i++)
         {
             if (itemList[i].type == type)
             {
-                itemList[i].amount += amount;
+                itemList[i].amount++;
 
                 inventory.ItemLook(itemList[i].type, itemList[i].amount, itemList[i].index);
 
@@ -31,7 +33,7 @@ public class ItemManager : MonoBehaviour
                 InventoryData inventoryData = new InventoryData();
 
                 inventoryData.type = type;
-                inventoryData.amount = amount;
+                inventoryData.amount = 1;
                 inventoryData.index = i;
 
                 itemList[i] = inventoryData;
@@ -46,13 +48,16 @@ public class ItemManager : MonoBehaviour
     public void Use(int index)
     {
         // Debug.Log($"사용 {itemList[index].type}");
-        
+
         if (itemList[index].type == ItemType.None)
         {
             return;
         }
 
         itemList[index].amount--;
+        
+        UseItem(itemList[index].type);
+        
         inventory.ItemLook(itemList[index].type, itemList[index].amount, itemList[index].index);
 
         if (itemList[index].amount <= 0)
@@ -60,6 +65,13 @@ public class ItemManager : MonoBehaviour
             itemList[index].type = ItemType.None;
             itemList[index].amount = 0;
         }
+    }
+
+
+    private void UseItem(ItemType type)
+    {
+        Debug.Log(itemData[(int)type].value);
+        
     }
 }
 
