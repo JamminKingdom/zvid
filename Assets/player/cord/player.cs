@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class Player : MonoBehaviour
     
     public GameObject play;
     public float Speed = 5f;
+    
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    
     private SpriteRenderer sp;
 
     public Rigidbody2D rb;
@@ -27,11 +32,36 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
+    }
+
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Projectile projectile = bulletGO.GetComponent<Projectile>();
+            
+            if (sp.flipX == true)
+            {
+                Debug.Log(true); //  왼
+                Vector2 left = Vector2.left;
+                Debug.Log(left);
+                projectile.SetDirection(left);
+            }
+            else
+            {
+                Debug.Log(false);// 오
+                Vector2 right = Vector2.right;
+                Debug.Log(right);
+                projectile.SetDirection(right);
+                
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -42,11 +72,8 @@ public class Player : MonoBehaviour
     private void Move()
     {
         var h = Input.GetAxisRaw("Horizontal");
-
         var v = Input.GetAxisRaw("Vertical");
-
         dir = new Vector2(h, v);
-        
         rb.MovePosition(rb.position + Speed * Time.deltaTime * dir);
 
         if (dir == Vector2.zero)
@@ -63,7 +90,6 @@ public class Player : MonoBehaviour
         {
             sp.flipX = true;
         }
-
         else
         {
             sp.flipX = false;

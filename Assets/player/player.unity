@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &323817375 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6450598293210225801, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+  m_PrefabInstance: {fileID: 7815363213858819564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1300231007
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +370,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5683391327934105069, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+      propertyPath: lifetime
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683391327934105069, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 323817375}
+    - target: {fileID: 5683391327934105069, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7512093102021596430, guid: 223260ccb6b71ac49856c752221aaac1, type: 3}
     - target: {fileID: 6450598293210225801, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
