@@ -28,12 +28,21 @@ public class InventoryUi : MonoBehaviour
     
     public ItemManager itemManager;
     
-    public GameObject statebar;
+    // public GameObject statebar;
+
+    public GameObject bar;
+    
+    private Vector3 originalPosition;
+    
+    private Vector3 position;
 
     private void Start()
     {
         inventoryOpen = false;
         canvasgroup.alpha = 0f;
+        
+        originalPosition = bar.transform.localPosition;
+        position = new Vector3(320f, 155f, 0f);
     }
 
     private void Update()
@@ -41,7 +50,9 @@ public class InventoryUi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && !inventoryOpen)
         {
             // Debug.Log("Inventory Open");
-            statebar.SetActive(false);
+            // statebar.SetActive(false);
+            bar.transform.localPosition = position;
+            
             canvasgroup.alpha = 1f;
             currentTime = Time.timeScale;
             Time.timeScale = 0f;
@@ -52,7 +63,9 @@ public class InventoryUi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && inventoryOpen)
         {
             // Debug.Log("Inventory Close");
-            statebar.SetActive(true);
+            // statebar.SetActive(true);
+            bar.transform.localPosition = originalPosition;
+            
             canvasgroup.alpha = 0f;
             Time.timeScale = currentTime;
             inventoryOpen = false;
