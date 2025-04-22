@@ -15,7 +15,4 @@ public class PlayerData : MonoBehaviour
             _hp = newValue;
         }
     }
-    
-    
-    
 }

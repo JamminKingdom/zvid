@@ -62,6 +62,16 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
         
+        if (_data.dirVec.sqrMagnitude < _data.detectionRangeSqr)
+        {
+            _state = EnemyState.Chase; 
+            _chase.enabled = true;
+        }
+        else
+        {
+            _chase.enabled = false;
+        }
+        
         if (_data.isWalking)
         {
             _spriteRenderer.flipX = _data.dirVec.x < 0f;
@@ -74,15 +84,6 @@ public class EnemyMovement : MonoBehaviour
         if (_state == EnemyState.Attack) return;
         if (_state == EnemyState.Dead) return;
         
-        if (_data.dirVec.sqrMagnitude < _data.detectionRangeSqr)
-        {
-            _state = EnemyState.Chase; 
-            _chase.enabled = true;
-        }
-        else
-        {
-            _chase.enabled = false;
-        }
     }
     
     private void Attack()
