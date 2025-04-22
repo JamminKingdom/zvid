@@ -92,7 +92,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5694054858305676012, guid: 3a09040a76c748b4abedfd14937bd2fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -564,6 +564,18 @@ PrefabInstance:
     - target: {fileID: 4263173439463066127, guid: a761fd7af4da12046a2e97bdfd5f693c, type: 3}
       propertyPath: m_Name
       value: stateBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401213290133302749, guid: a761fd7af4da12046a2e97bdfd5f693c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401213290133302749, guid: a761fd7af4da12046a2e97bdfd5f693c, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401213290133302749, guid: a761fd7af4da12046a2e97bdfd5f693c, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 8806129455101689235, guid: a761fd7af4da12046a2e97bdfd5f693c, type: 3}
       propertyPath: m_Pivot.x
