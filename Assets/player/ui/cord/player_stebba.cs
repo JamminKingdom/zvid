@@ -1,13 +1,11 @@
 using System;
 using System.Net.Mime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class player_stebba : MonoBehaviour
 {
-    public int strength = 100;
-    public int currentHealth;
-    
     public float maxStebba = 100f;
     public float Stebba = 100f;
     public Image StebbaFillImage;
@@ -17,28 +15,41 @@ public class player_stebba : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = strength;
         StebbaFillImage.fillAmount = 1f;
     }
 
     public void Update()
     {
-        if (PlayerWataer.wataer == 0)
+        if (PlayerWataer.wataer <= 0.00001f)
         {
             Stebba -= Time.deltaTime * 2;
         }
         
-        if (PlayerHunger.Hunger == 0)
+        if (PlayerHunger.Hunger <= 0.00001f)
         {
             Stebba -= Time.deltaTime * 2;
         }
-        
-        else if(currentHealth <= 0)
+
+        if (PlayerWataer.wataer >= 99.9999f)
         {
-            Debug.Log("플레이어 사망");
+            Stebba += Time.deltaTime * 1;
+        }
+
+        if (PlayerHunger.Hunger >= 99.9999f)
+        {
+            Stebba += Time.deltaTime * 1;
         }
         Stebba = Mathf.Clamp(Stebba, 0, maxStebba);
 
         StebbaFillImage.fillAmount = Stebba / maxStebba;
+    }
+
+    private void TakeDamage(float damage)
+    {
+        Stebba -= damage;
+        if (Stebba <= 0)
+        {
+            Debug.Log("사망");
+        }
     }
 }
