@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 4784012934130098686
     second: Muscle_Remedy_Resized_0
+  - first:
+      213: -3283870457189629606
+    second: Muscle_Remedy_Resized_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -117,11 +120,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 32
+        y: 9
+        width: 52
+        height: 43
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,11 +137,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Muscle_Remedy_Resized_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 12
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5100d6c7395d62d0800000000000000
+      internalID: -3283870457189629606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: aead903740036c94aade0627f9c837eb
     internalID: 0
     vertices: []
     indices: 
@@ -149,6 +174,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Muscle_Remedy_Resized_0: 4784012934130098686
+      Muscle_Remedy_Resized_1: -3283870457189629606
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
