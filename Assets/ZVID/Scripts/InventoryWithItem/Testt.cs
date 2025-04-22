@@ -1,19 +1,8 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Testt : MonoBehaviour
 {
     public ItemManager im;
-    
-    // public GameObject itemPrefab;
-    //
-    // public Transform[] itemSpawnPoints;
-    
-    void Start()
-    {
-        
-    }
-    
     
     void Update()
     {

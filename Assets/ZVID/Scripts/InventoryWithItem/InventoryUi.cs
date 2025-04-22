@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class InventoryUi : MonoBehaviour
@@ -25,23 +22,28 @@ public class InventoryUi : MonoBehaviour
     public static bool inventoryOpen;
     
     private float currentTime;
+
+    public GameObject bar;
     
-    public ItemManager itemManager;
+    private Vector3 originalPosition;
     
-    public GameObject statebar;
+    private Vector3 position;
 
     private void Start()
     {
         inventoryOpen = false;
         canvasgroup.alpha = 0f;
+        
+        originalPosition = bar.transform.localPosition;
+        position = new Vector3(320f, 155f, 0f);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I) && !inventoryOpen)
         {
-            // Debug.Log("Inventory Open");
-            statebar.SetActive(false);
+            bar.transform.localPosition = position;
+            
             canvasgroup.alpha = 1f;
             currentTime = Time.timeScale;
             Time.timeScale = 0f;
@@ -51,8 +53,8 @@ public class InventoryUi : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I) && inventoryOpen)
         {
-            // Debug.Log("Inventory Close");
-            statebar.SetActive(true);
+            bar.transform.localPosition = originalPosition;
+            
             canvasgroup.alpha = 0f;
             Time.timeScale = currentTime;
             inventoryOpen = false;
@@ -61,7 +63,7 @@ public class InventoryUi : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && inventoryOpen && Slot.isSelected)
         {
-            itemManager.Use(int.Parse(Slot.slot.name));
+            ItemManager.Instance.Use(int.Parse(Slot.slot.name));
         }
 
 
@@ -70,31 +72,29 @@ public class InventoryUi : MonoBehaviour
         {
             discriptionText.text = "";
             nameText.text = "";
-            itemImage.sprite = itemManager.itemData[0].sprite;
+            itemImage.sprite = ItemManager.Instance.itemData[0].sprite;
         }
         else
         {
-            int type = itemManager.presentType(int.Parse(Slot.slot.name));
+            int type = ItemManager.Instance.presentType(int.Parse(Slot.slot.name));
             
-            discriptionText.text = itemManager.itemData[type].description;
-            nameText.text = itemManager.itemData[type].name;
-            itemImage.sprite = itemManager.itemData[type].sprite;
+            discriptionText.text = ItemManager.Instance.itemData[type].description;
+            nameText.text = ItemManager.Instance.itemData[type].name;
+            itemImage.sprite = ItemManager.Instance.itemData[type].sprite;
         }
 
     }
 
     public void ItemLook(ItemType type, int amount, int index)
     {
-        // Debug.Log($"ItemLock {type} {amount} {index}");
-        
-        items[index].sprite = itemManager.itemData[(int)type].sprite;
+        items[index].sprite = ItemManager.Instance.itemData[(int)type].sprite;
         
         count[index].text = amount.ToString();
         
         if (amount <= 0)
         {
             count[index].text = "";
-            items[index].sprite = itemManager.itemData[0].sprite;
+            items[index].sprite = ItemManager.Instance.itemData[0].sprite;
         }
         
     }

@@ -1308,7 +1308,7 @@ MonoBehaviour:
   - type: 5
     name: "\uC9C4\uD1B5\uC81C"
     description: "\uD53C\uAC00 \uCC28\uB294 \uB290\uB08C\uC774\uB2E4.."
-    value: 50
+    value: 30
     weight: 0
     amount: 1
     sprite: {fileID: -4131048456239966253, guid: feb3adc99ee3db04ebf6d378b7b96e48, type: 3}
@@ -1365,6 +1365,9 @@ MonoBehaviour:
   - type: 0
     amount: 0
     index: 0
+  wataer: {fileID: 0}
+  hunger: {fileID: 0}
+  statebar: {fileID: 0}
 --- !u!1 &1522870649534252572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,6 +2296,7 @@ MonoBehaviour:
   nameText: {fileID: 8521739507547010469}
   itemImage: {fileID: 1639573964423691655}
   itemManager: {fileID: 130373011604882277}
+  bar: {fileID: 0}
 --- !u!225 &5246761717744178897
 CanvasGroup:
   m_ObjectHideFlags: 0

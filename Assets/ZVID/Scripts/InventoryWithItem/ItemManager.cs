@@ -1,10 +1,8 @@
-
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    public static ItemManager Instance;
     public InventoryUi inventory;
 
     public ItemData[] itemData = new ItemData[7];
@@ -15,6 +13,16 @@ public class ItemManager : MonoBehaviour
     public player_Hunger hunger;
     public player_stebba statebar;
 
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     public void Add(ItemType type)
     {
         for (int i = 0; i < itemList.Length; i++)

@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    public EnemyMovement enemyMovement;
+    public Camera mainCamera;
+    public LayerMask enemyLayerMask;
     
     private Rigidbody2D rb;
     private Vector2 targetVelocity;
@@ -11,6 +13,7 @@ public class test : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemyLayerMask = LayerMask.GetMask("Enemy");
     }
 
     private void Update()
@@ -24,19 +27,32 @@ public class test : MonoBehaviour
         
         targetVelocity = inputVector * moveSpeed;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetMouseButtonDown(0))
         {
-            enemyMovement.TakeDamage(10);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            enemyMovement.TakeDamage(10);
+            TryKillEnemyAtMouse();
         }
     }
 
     private void FixedUpdate()
     {
         rb.linearVelocity = targetVelocity;
+    }
+    
+    private void TryKillEnemyAtMouse()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = -mainCamera.transform.position.z;
+        Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
+        Vector2 worldPos2D = new Vector2(worldPos.x, worldPos.y);
+
+        Collider2D hit = Physics2D.OverlapPoint(worldPos2D, enemyLayerMask);
+        if (hit == null)
+            return;
+
+        EnemyMovement enemy = hit.GetComponent<EnemyMovement>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(int.MaxValue);
+        }
     }
 }

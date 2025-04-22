@@ -39,6 +39,7 @@ public class EnemyData : MonoBehaviour
     private void Awake()
     {
         _hp = MaxHp;
+        dirVec = new(1000000f, 1000000f);
     }
 
     private void Update()

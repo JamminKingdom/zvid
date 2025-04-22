@@ -15,18 +15,12 @@ public class Slot : MonoBehaviour
         image.color = new Color(1f, 1f, 1f, 0f);
     }
 
-    private void Update()
-    {
-    }
-
     public void Open()
     {
         if (!InventoryUi.inventoryOpen)
         {
             return;
         }
-
-        // Debug.Log($"Open {gameObject.name}");
 
         if (slot != null)
         {
@@ -47,7 +41,6 @@ public class Slot : MonoBehaviour
 
     public void Close()
     {
-        // Debug.Log($"Close {gameObject.name}");
         isSelected = false;
         image.color = new Color(1f, 1f, 1f, 0f);
     }

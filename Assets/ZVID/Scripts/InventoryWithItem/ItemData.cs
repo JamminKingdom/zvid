@@ -12,13 +12,13 @@ public class ItemData
     public int amount;
     public Sprite sprite;
     
-    public ItemData(ItemType type, string name, string description, int value, int amount, Sprite sprite)
+    public ItemData(ItemType type, string name, string description, int value, int weight, Sprite sprite)
     {
         this.type = type;
         this.name = name;
         this.description = description;
         this.value = value;
-        this.amount = amount;
+        this.weight = weight;
         this.sprite = sprite;
     }
 }

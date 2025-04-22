@@ -45,6 +45,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
+  itemData:
+  - type: 0
+    name: 
+    description: 
+    value: 0
+    weight: 0
+    amount: 0
+    sprite: {fileID: 0}
+  - type: 0
+    name: 
+    description: 
+    value: 0
+    weight: 0
+    amount: 0
+    sprite: {fileID: 0}
+  - type: 0
+    name: 
+    description: 
+    value: 0
+    weight: 0
+    amount: 0
+    sprite: {fileID: 0}
+  - type: 0
+    name: 
+    description: 
+    value: 0
+    weight: 0
+    amount: 0
+    sprite: {fileID: 0}
+  - type: 0
+    name: 
+    description: 
+    value: 0
+    weight: 0
+    amount: 0
+    sprite: {fileID: 0}
+  - type: 0
+    name: 
+    description: 
+    value: 0
+    weight: 0
+    amount: 0
+    sprite: {fileID: 0}
+  - type: 0
+    name: 
+    description: 
+    value: 0
+    weight: 0
+    amount: 0
+    sprite: {fileID: 0}
   itemList:
   - type: 0
     amount: 0
@@ -91,3 +141,6 @@ MonoBehaviour:
   - type: 0
     amount: 0
     index: 0
+  wataer: {fileID: 0}
+  hunger: {fileID: 0}
+  statebar: {fileID: 0}

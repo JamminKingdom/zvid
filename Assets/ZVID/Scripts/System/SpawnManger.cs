@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; }
-    public ItemManager itemManager;
     
     [SerializeField] private Tilemap groundTilemap;
     [SerializeField] private Tilemap obstacleTilemap;
@@ -27,7 +25,7 @@ public class SpawnManager : MonoBehaviour
         {
             float sum = 0;
             
-            foreach (var it in itemManager.itemData)
+            foreach (var it in ItemManager.Instance.itemData)
                 sum += it.weight;
             
             return sum;
@@ -87,7 +85,7 @@ public class SpawnManager : MonoBehaviour
     {
         var item = GetRandomItem();
 
-        if (item == null) return;
+        if (item.type == ItemType.None) return;
         
         GameObject go = Instantiate(itemPrefab, spawnPoint.position, Quaternion.identity);
         
@@ -102,7 +100,7 @@ public class SpawnManager : MonoBehaviour
         float rnd = Random.Range(0f, total);
         float accum = 0f;
 
-        foreach (var data in itemManager.itemData)
+        foreach (var data in ItemManager.Instance.itemData)
         {
             accum += data.weight;
             if (rnd <= accum)
