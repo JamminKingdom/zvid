@@ -124,6 +124,34 @@ PrefabInstance:
       propertyPath: statebar
       value: 
       objectReference: {fileID: 3335830675879695941}
+    - target: {fileID: 130373011604882277, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
+      propertyPath: itemData.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 130373011604882277, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
+      propertyPath: itemData.Array.data[1].weight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 130373011604882277, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
+      propertyPath: itemData.Array.data[2].weight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 130373011604882277, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
+      propertyPath: itemData.Array.data[3].weight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 130373011604882277, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
+      propertyPath: itemData.Array.data[4].weight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 130373011604882277, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
+      propertyPath: itemData.Array.data[5].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 130373011604882277, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
+      propertyPath: itemData.Array.data[6].weight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 613206014851350013, guid: 78e15406a60637c47becbd9ab66eeb21, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
