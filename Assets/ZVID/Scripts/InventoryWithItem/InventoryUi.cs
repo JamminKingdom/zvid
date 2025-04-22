@@ -27,6 +27,8 @@ public class InventoryUi : MonoBehaviour
     private float currentTime;
     
     public ItemManager itemManager;
+    
+    public GameObject statebar;
 
     private void Start()
     {
@@ -39,6 +41,7 @@ public class InventoryUi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && !inventoryOpen)
         {
             // Debug.Log("Inventory Open");
+            statebar.SetActive(false);
             canvasgroup.alpha = 1f;
             currentTime = Time.timeScale;
             Time.timeScale = 0f;
@@ -49,6 +52,7 @@ public class InventoryUi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && inventoryOpen)
         {
             // Debug.Log("Inventory Close");
+            statebar.SetActive(true);
             canvasgroup.alpha = 0f;
             Time.timeScale = currentTime;
             inventoryOpen = false;

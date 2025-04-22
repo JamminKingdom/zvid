@@ -10,6 +10,10 @@ public class ItemManager : MonoBehaviour
     public ItemData[] itemData = new ItemData[7];
 
     [SerializeField] private InventoryData[] itemList = new InventoryData[15];
+    
+    public player_wataer wataer;
+    public player_Hunger hunger;
+    public player_stebba statebar;
 
     public void Add(ItemType type)
     {
@@ -70,8 +74,28 @@ public class ItemManager : MonoBehaviour
 
     private void UseItem(ItemType type)
     {
-        Debug.Log(itemData[(int)type].value);
+        if (type == 0)
+        {
+            return;
+        }
+        else if ((int)type == 1 || (int)type == 2)
+        {
+            hunger.Hunger += itemData[(int)type].value;
+        }
+        else if ((int)type == 3 || (int)type == 4)
+        {
+            wataer.wataer += itemData[(int)type].value;
+        }
+        else if ((int)type == 5)
+        {
+            statebar.Stebba += itemData[(int)type].value;
+        }
+        else if ((int)type == 6)
+        {
+            //질병관련 아이템 사용
+        }
         
+
     }
 
     public int presentType(int index)
