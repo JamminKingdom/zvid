@@ -1,6 +1,3 @@
-using System;
-using System.Net.Mime;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +41,7 @@ public class player_stebba : MonoBehaviour
         StebbaFillImage.fillAmount = Stebba / maxStebba;
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         Stebba -= damage;
         if (Stebba <= 0)
