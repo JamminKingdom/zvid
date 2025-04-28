@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     private Vector2 dir;
 
     private Animator anim;
+
+    public int maxBulletsInScene = 5;
 
     private void Awake()
     {
@@ -46,16 +49,12 @@ public class Player : MonoBehaviour
             
             if (sp.flipX == true)
             {
-                Debug.Log(true); //  왼
                 Vector2 left = Vector2.left;
-                Debug.Log(left);
                 projectile.SetDirection(left);
             }
             else
             {
-                Debug.Log(false);// 오
                 Vector2 right = Vector2.right;
-                Debug.Log(right);
                 projectile.SetDirection(right);
                 
             }
@@ -65,6 +64,14 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+    }
+
+    public void Shoot()
+    {
+        if (GameObject.FindGameObjectWithTag("Bullet").layer < maxBulletsInScene)
+        {
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        }
     }
 
     private void Move()
@@ -88,7 +95,7 @@ public class Player : MonoBehaviour
         {
             sp.flipX = true;
         }
-        else
+        else if(h > 0)
         {
             sp.flipX = false;
         }
