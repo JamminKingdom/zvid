@@ -30,7 +30,7 @@ public class EnemyData : MonoBehaviour
     [HideInInspector]
     public bool isWalking;
     [HideInInspector]
-    public float detectionRangeSqr = 30f;
+    public float detectionRangeSqr = 40f;
     [HideInInspector]
     public float attackRangeSqr = 15f;
     [HideInInspector]

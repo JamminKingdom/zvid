@@ -1,32 +1,43 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyChase : MonoBehaviour
 {
     public float moveSpeed = 0.1f;
     
-    private Rigidbody2D _rb;
-    private EnemyData _data;
-    
-    private readonly float speedAccelerationRate = 100000f;
-    private readonly float minSpeed = 0.1f;
-    private readonly float maxSpeed = 5f;
+    private NavMeshAgent _agent;
     
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _data = GetComponent<EnemyData>();
-    } 
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
+    }
+
+    private void Start()
+    {
+        UpdateDestination();
+    }
 
     private void Update()
     {
-        moveSpeed = Mathf.Clamp(moveSpeed + TimeManager.Instance.ElapsedTime / speedAccelerationRate, minSpeed, maxSpeed);
+        UpdateDestination();
     }
 
-    private void FixedUpdate()
+    private void UpdateDestination()
     {
-        Vector2 nextVec = moveSpeed * Time.fixedDeltaTime * _data.dirVec.normalized;
-            
-        _rb.MovePosition(_rb.position + nextVec);
-        _rb.linearVelocity = Vector2.zero;
+        _agent.SetDestination(Player.Instance.transform.position);
+    }
+
+    private void OnEnable()
+    {
+        _agent.isStopped = false;
+        _agent.ResetPath();
+    }
+    
+    private void OnDisable()
+    {
+        _agent.isStopped = true;
+        _agent.ResetPath();
     }
 }
