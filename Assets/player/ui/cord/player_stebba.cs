@@ -10,6 +10,8 @@ public class player_stebba : MonoBehaviour
     public player_wataer PlayerWataer;
     public player_Hunger PlayerHunger;
 
+    public Gameover over;
+
     private void Start()
     {
         StebbaFillImage.fillAmount = 1f;
@@ -39,6 +41,11 @@ public class player_stebba : MonoBehaviour
         Stebba = Mathf.Clamp(Stebba, 0, maxStebba);
 
         StebbaFillImage.fillAmount = Stebba / maxStebba;
+        
+        if (Stebba <= 0)
+        {
+            Dir();
+        }
     }
 
     public void TakeDamage(float damage)
@@ -46,7 +53,13 @@ public class player_stebba : MonoBehaviour
         Stebba -= damage;
         if (Stebba <= 0)
         {
-            Debug.Log("사망");
+            Dir();
         }
+    }
+
+    public void Dir()
+    {
+        over.over();
+        Debug.Log("사망");
     }
 }
