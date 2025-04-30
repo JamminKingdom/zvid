@@ -255,6 +255,7 @@ MonoBehaviour:
   attackState: {fileID: -575717040626833407}
   hitState: {fileID: -5712633112797795163}
   deadState: {fileID: -3950198021326158095}
+  _data: {fileID: 0}
 --- !u!114 &4812895517008515985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bd33a80e264e80b1953676cec6e7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderRadius: 5
+  wanderInterval: 7
 --- !u!114 &2531428904340395987
 MonoBehaviour:
   m_ObjectHideFlags: 0
