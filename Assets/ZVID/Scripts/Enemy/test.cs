@@ -51,15 +51,15 @@ public class test : MonoBehaviour
         mousePos.z = -mainCamera.transform.position.z;
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
         Vector2 worldPos2D = new Vector2(worldPos.x, worldPos.y);
-
+    
         Collider2D hit = Physics2D.OverlapPoint(worldPos2D, enemyLayerMask);
         if (hit == null)
             return;
-
-        EnemyMovement enemy = hit.GetComponent<EnemyMovement>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(int.MaxValue);
-        }
+    
+        Enemy enemy = hit.GetComponent<Enemy>();
+        if (enemy == null)
+            return;
+        
+        enemy.TakeDamage(int.MaxValue);
     }
 }
