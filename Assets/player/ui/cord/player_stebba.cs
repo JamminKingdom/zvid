@@ -1,17 +1,18 @@
-using System;
-using System.Net.Mime;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class player_stebba : MonoBehaviour
 {
     public float maxStebba = 100f;
     public float Stebba = 100f;
     public Image StebbaFillImage;
-
+    
     public player_wataer PlayerWataer;
     public player_Hunger PlayerHunger;
+    public player_Disease PlayerDisease;
+
+    public Gameover over;
 
     private void Start()
     {
@@ -20,6 +21,14 @@ public class player_stebba : MonoBehaviour
 
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) /////////////
+            TakeDamage(10);
+        
+        if (PlayerDisease.isSick)
+        {
+            Stebba -= Time.deltaTime * 1;
+        }
+        
         if (PlayerWataer.wataer <= 0.00001f)
         {
             Stebba -= Time.deltaTime * 2;
@@ -39,17 +48,42 @@ public class player_stebba : MonoBehaviour
         {
             Stebba += Time.deltaTime * 1;
         }
+
+        
         Stebba = Mathf.Clamp(Stebba, 0, maxStebba);
 
         StebbaFillImage.fillAmount = Stebba / maxStebba;
+        
+        if (Stebba <= 0)
+        {
+            Die();
+        }
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
+        if (Player.Instance.isHit)
+            return;
+        
+        Player.Instance.Hit();
+        
         Stebba -= damage;
         if (Stebba <= 0)
         {
-            Debug.Log("사망");
+            Die();
+            return;
         }
+
+        int pattern = Random.Range(1, 11);
+
+        if (pattern == 1)
+        {
+            PlayerDisease.GetDisease(); 
+        }
+    }
+
+    public void Die()
+    {
+        over.over();
     }
 }

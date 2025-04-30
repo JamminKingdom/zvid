@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyData : MonoBehaviour
 {
+    [HideInInspector]
     public Transform target;
 
     [HideInInspector]
@@ -30,20 +31,32 @@ public class EnemyData : MonoBehaviour
     [HideInInspector]
     public bool isWalking;
     [HideInInspector]
-    public float detectionRangeSqr = 30f;
+    public float detectionRangeSqr = 40f;
     [HideInInspector]
     public float attackRangeSqr = 15f;
     [HideInInspector]
     public Vector2 dirVec;
+    
+    [HideInInspector]
+    public readonly int HashIsWalking = Animator.StringToHash("IsWalking");
+    [HideInInspector]
+    public readonly int HashAttack = Animator.StringToHash("Attack");
+    [HideInInspector]
+    public readonly int HashHit = Animator.StringToHash("Hit");
+    [HideInInspector]
+    public readonly int HashDead = Animator.StringToHash("Dead");
 
     private void Awake()
     {
+        target = Player.Instance.transform;
+        
         _hp = MaxHp;
+        dirVec = new(1000000f, 1000000f);
     }
 
     private void Update()
     {
-        dirVec = target.position - transform.position;
+        dirVec = Player.Instance.transform.position - transform.position;
         isWalking = dirVec.sqrMagnitude < detectionRangeSqr;
     }
 }

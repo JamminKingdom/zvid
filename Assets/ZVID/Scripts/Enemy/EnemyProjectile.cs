@@ -6,14 +6,18 @@ public class EnemyProjectile : MonoBehaviour
     public float lifetime = 5f;
     public float moveSpeed = 6f;
 
-    private int _damage;
+    private int _damage = 10;
     private Rigidbody2D _rb;
     private LayerMask targetLayers;
+
+    private player_stebba playerHealth; //
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         targetLayers = LayerMask.NameToLayer("Player");
+        
+        playerHealth = FindObjectOfType<player_stebba>(); //
     }
     
     public void Shot(int damage, Vector2 direction)
@@ -30,7 +34,7 @@ public class EnemyProjectile : MonoBehaviour
         if (other.gameObject.layer == targetLayers)
         {
             //Player TakeDamage
-            Debug.Log("Player Hit");
+            playerHealth.TakeDamage(_damage);
             Destroy(gameObject);
         }
     }

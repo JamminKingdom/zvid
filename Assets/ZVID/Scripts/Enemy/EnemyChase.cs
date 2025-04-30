@@ -1,32 +1,51 @@
-using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemyChase : MonoBehaviour
+public class EnemyChase : EnemyStateBase
 {
     public float moveSpeed = 0.1f;
     
-    private Rigidbody2D _rb;
-    private EnemyData _data;
+    private NavMeshAgent _agent;
     
-    private readonly float speedAccelerationRate = 100000f;
-    private readonly float minSpeed = 0.1f;
-    private readonly float maxSpeed = 5f;
-    
-    private void Awake()
+    protected override void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _data = GetComponent<EnemyData>();
-    } 
-
+        base.Awake();
+        
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
+    }
+      
+    private void OnEnable()
+    {
+        anim.SetBool(data.HashIsWalking, data.isWalking);
+        _agent.isStopped = false;
+        _agent.ResetPath();
+    }
+    
+    
     private void Update()
     {
-        moveSpeed = Mathf.Clamp(moveSpeed + TimeManager.Instance.ElapsedTime / speedAccelerationRate, minSpeed, maxSpeed);
+        UpdateDestination();
+        
+        if (data.dirVec.sqrMagnitude < data.attackRangeSqr)
+        {
+            enemy.SetState(enemy.attackState);
+        }
+        else if (data.dirVec.sqrMagnitude > data.detectionRangeSqr)
+        {
+            enemy.SetState(enemy.idleState);
+        }
+    }
+    
+    private void OnDisable()
+    {
+        _agent.isStopped = true;
+        _agent.ResetPath();
     }
 
-    private void FixedUpdate()
+    private void UpdateDestination()
     {
-        Vector2 nextVec = moveSpeed * Time.fixedDeltaTime * _data.dirVec.normalized;
-            
-        _rb.MovePosition(_rb.position + nextVec);
-        _rb.linearVelocity = Vector2.zero;
+        _agent.SetDestination(Player.Instance.transform.position);
+        spriteRenderer.flipX = data.dirVec.x < 0f;
     }
 }

@@ -44,9 +44,14 @@ GameObject:
   - component: {fileID: 7227646052349632814}
   - component: {fileID: 7267613029668141620}
   - component: {fileID: 8913766709041983915}
-  - component: {fileID: 871297701298601113}
+  - component: {fileID: -8329032550966462471}
+  - component: {fileID: -7534839243031985055}
   - component: {fileID: 4812895517008515985}
+  - component: {fileID: -7442037305872613327}
   - component: {fileID: 2531428904340395987}
+  - component: {fileID: -575717040626833407}
+  - component: {fileID: -5712633112797795163}
+  - component: {fileID: -3950198021326158095}
   m_Layer: 11
   m_Name: Zombie1
   m_TagString: Untagged
@@ -211,7 +216,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &871297701298601113
+--- !u!195 &-8329032550966462471
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370877844234673026}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-7534839243031985055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,11 +247,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8370877844234673026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e2b6e68224bb944a7b2da496206064, type: 3}
+  m_Script: {fileID: 11500000, guid: fcf5571bb6044bb984dba021750cbf38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingPoint: {fileID: 5002448223031230362}
-  projectilePrefab: {fileID: 4463761441624560187, guid: 837b269030c82aa4bbe856e8eb0e9476, type: 3}
+  idleState: {fileID: -7442037305872613327}
+  chaseState: {fileID: 2531428904340395987}
+  attackState: {fileID: -575717040626833407}
+  hitState: {fileID: -5712633112797795163}
+  deadState: {fileID: -3950198021326158095}
+  _data: {fileID: 0}
 --- !u!114 &4812895517008515985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +277,20 @@ MonoBehaviour:
   detectionRangeSqr: 30
   attackRangeSqr: 15
   dirVec: {x: 0, y: 0}
+--- !u!114 &-7442037305872613327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370877844234673026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bd33a80e264e80b1953676cec6e7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 5
+  wanderInterval: 7
 --- !u!114 &2531428904340395987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,3 +304,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+--- !u!114 &-575717040626833407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370877844234673026}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa11c3d0d24e40a38772c44c8e176a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingPoint: {fileID: 5002448223031230362}
+  projectilePrefab: {fileID: 4463761441624560187, guid: 837b269030c82aa4bbe856e8eb0e9476, type: 3}
+--- !u!114 &-5712633112797795163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370877844234673026}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7036904bb04e43d6bf9552719aaf755f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3950198021326158095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370877844234673026}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2146451f49634beb90d46688efcf3212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
