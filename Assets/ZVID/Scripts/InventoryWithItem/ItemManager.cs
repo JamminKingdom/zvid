@@ -12,6 +12,9 @@ public class ItemManager : MonoBehaviour
     public player_wataer wataer;
     public player_Hunger hunger;
     public player_stebba statebar;
+    
+    private InventoryData dragData;
+    private InventoryData dropData;
 
     private void Awake()
     {
@@ -109,6 +112,32 @@ public class ItemManager : MonoBehaviour
     public int presentType(int index)
     {
         return (int) itemList[index].type;
+    }
+
+    public void ChangeData(int dragIndex, int dropIndex)
+    {
+        
+        dragData = itemList[dragIndex];
+        dropData = itemList[dropIndex];
+        
+        dragData.index = dropIndex;
+        dropData.index = dragIndex;
+        
+        itemList[dragIndex] = dropData;
+        itemList[dropIndex] = dragData;
+
+        if (itemList[dragIndex].type == ItemType.None)
+        {
+            itemList[dragIndex].index = 0;
+        }
+
+        if (itemList[dropIndex].type == ItemType.None)
+        {
+            itemList[dropIndex].index = 0;
+        }
+        
+        inventory.ItemLook(itemList[dragIndex].type, itemList[dragIndex].amount, dragIndex);
+        inventory.ItemLook(itemList[dropIndex].type, itemList[dropIndex].amount, dropIndex);
     }
 }
 

@@ -28,7 +28,18 @@ public class InventoryUi : MonoBehaviour
     private Vector3 originalPosition;
     
     private Vector3 position;
-
+    
+    
+    
+    // private RectTransform[] originRectTransform = new RectTransform[15];
+    //
+    // private void Awake()
+    // {
+    //     for (int i = 0; i < items.Length; i++)
+    //     {
+    //         originRectTransform[i] = items[i].rectTransform;
+    //     }
+    // }
     private void Start()
     {
         inventoryOpen = false;
@@ -96,7 +107,16 @@ public class InventoryUi : MonoBehaviour
             count[index].text = "";
             items[index].sprite = ItemManager.Instance.itemData[0].sprite;
         }
-        
     }
+
+    // public void MovePosition(Vector2 pos, int index)
+    // { 
+    //     items[index].rectTransform.position = pos;
+    // }
+    //
+    // public void ResetPosition(int index)
+    // {
+    //     items[index].rectTransform.position = originRectTransform[index].position;
+    // }
 }
     
