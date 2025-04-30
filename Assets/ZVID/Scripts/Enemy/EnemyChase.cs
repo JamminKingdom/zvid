@@ -1,43 +1,51 @@
-using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyChase : MonoBehaviour
+public class EnemyChase : EnemyStateBase
 {
     public float moveSpeed = 0.1f;
     
     private NavMeshAgent _agent;
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
     }
-
-    private void Start()
+      
+    private void OnEnable()
     {
-        UpdateDestination();
+        anim.SetBool(data.HashIsWalking, data.isWalking);
+        _agent.isStopped = false;
+        _agent.ResetPath();
     }
-
+    
+    
     private void Update()
     {
         UpdateDestination();
-    }
-
-    private void UpdateDestination()
-    {
-        _agent.SetDestination(Player.Instance.transform.position);
-    }
-
-    private void OnEnable()
-    {
-        _agent.isStopped = false;
-        _agent.ResetPath();
+        
+        if (data.dirVec.sqrMagnitude < data.attackRangeSqr)
+        {
+            enemy.SetState(enemy.attackState);
+        }
+        else if (data.dirVec.sqrMagnitude > data.detectionRangeSqr)
+        {
+            enemy.SetState(enemy.idleState);
+        }
     }
     
     private void OnDisable()
     {
         _agent.isStopped = true;
         _agent.ResetPath();
+    }
+
+    private void UpdateDestination()
+    {
+        _agent.SetDestination(Player.Instance.transform.position);
+        spriteRenderer.flipX = data.dirVec.x < 0f;
     }
 }
