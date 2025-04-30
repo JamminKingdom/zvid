@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class player_Hunger : MonoBehaviour
@@ -8,7 +9,7 @@ public class player_Hunger : MonoBehaviour
     public int currentHealth;
     
     public Image HungerFillImage;
-    public float maxWater = 100f;
+    public float maxHunger = 100f;
 
     //게이지 물
     public float Hunger = 100f;
@@ -16,7 +17,6 @@ public class player_Hunger : MonoBehaviour
     private void Start()
     {
         currentHealth = strength;
-        
     }
 
     public void TakeDamage(int damage)
@@ -28,8 +28,8 @@ public class player_Hunger : MonoBehaviour
     public void Update()
     {
         Hunger -= Time.deltaTime * 2f;
-        Hunger = Mathf.Clamp(Hunger, 0, maxWater);
+        Hunger = Mathf.Clamp(Hunger, 0, maxHunger);
 
-        HungerFillImage.fillAmount = Hunger / maxWater;
+        HungerFillImage.fillAmount = Hunger / maxHunger;
     }
 }

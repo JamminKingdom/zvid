@@ -217,6 +217,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1132604814}
+--- !u!114 &395477132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4058708704554727334, guid: a5b6657f4d58693459051f77d20b77f3, type: 3}
+  m_PrefabInstance: {fileID: 697732057933470471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395477128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2daebd2128c381e458121039cb33fa0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &473000252
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5345911, g: 0.48359755, b: 0.46902797, a: 0.21568628}
+  m_Color: {r: 0.16352195, g: 0.05948881, b: 0.035481155, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -781,6 +792,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5683391327934105069, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+      propertyPath: stebba
+      value: 
+      objectReference: {fileID: 395477132}
+    - target: {fileID: 5683391327934105069, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
       propertyPath: lifetime
       value: 
       objectReference: {fileID: 0}
@@ -871,6 +886,18 @@ PrefabInstance:
     - target: {fileID: 6450598293210225801, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352817797209869699, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352817797209869699, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352817797209869699, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9094988771086727753, guid: c2542c4528ca4444aa12d04ef2c2e24d, type: 3}
       propertyPath: m_Name
