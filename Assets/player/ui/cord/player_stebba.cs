@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -9,18 +7,12 @@ public class player_stebba : MonoBehaviour
     public float maxStebba = 100f;
     public float Stebba = 100f;
     public Image StebbaFillImage;
-    public SpriteRenderer sr;
     
     public player_wataer PlayerWataer;
     public player_Hunger PlayerHunger;
     public player_Disease PlayerDisease;
 
     public Gameover over;
-
-    private void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
 
     private void Start()
     {
@@ -29,8 +21,8 @@ public class player_stebba : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            Player.Instance.Hit();
+        if (Input.GetKeyDown(KeyCode.Alpha1)) /////////////
+            TakeDamage(10);
         
         if (PlayerDisease.isSick)
         {
@@ -70,6 +62,9 @@ public class player_stebba : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (Player.Instance.isHit)
+            return;
+        
         Player.Instance.Hit();
         
         Stebba -= damage;
@@ -90,6 +85,5 @@ public class player_stebba : MonoBehaviour
     public void Die()
     {
         over.over();
-        Debug.Log("사망");
     }
 }

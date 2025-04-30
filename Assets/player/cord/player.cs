@@ -8,14 +8,14 @@ public class Player : MonoBehaviour
     public float Speed = 5f;
     public float attackDelay = 0.5f;
 
+    public bool isHit;
     private bool isAttack;
-    private bool isHit;
     
     public GameObject bulletPrefab;
     public Transform firePoint;
     public player_stebba stebba;
+    public SpriteRenderer sp;
     
-    private SpriteRenderer sp;
     private Rigidbody2D rb;
     private Animator anim;
     private Vector2 dir;
@@ -112,8 +112,6 @@ public class Player : MonoBehaviour
     
     public void Hit()
     {
-        if (isHit)
-            return;
         StartCoroutine(HitProcess());
     }
     

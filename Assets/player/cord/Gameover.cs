@@ -1,31 +1,27 @@
-using System;
 using System.Collections;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gameover : MonoBehaviour
 {
-    public GameObject gameOverUI;
     private CanvasGroup canvasGroup;
+    private float fadeDuration = 1f;
 
     private void Start()
     {
-        canvasGroup = gameOverUI.GetComponent<CanvasGroup>();
+        canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f;
-        gameOverUI.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void over()
     {
-        gameOverUI.SetActive(true);
+        gameObject.SetActive(true);
         Time.timeScale = 1f;
         StartCoroutine(ShowGameOverUI());
     }
 
     private IEnumerator ShowGameOverUI()
     {
-        gameOverUI.SetActive(true);
         yield return new WaitForEndOfFrame();
         
         float t = 0f;
@@ -33,7 +29,7 @@ public class Gameover : MonoBehaviour
         while (t < 1f)
         {
             t += Time.unscaledDeltaTime;
-            canvasGroup.alpha = t;
+            canvasGroup.alpha = Mathf.Clamp01(t / fadeDuration);
             yield return null;
         }
         
