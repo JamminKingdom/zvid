@@ -3,12 +3,12 @@ using UnityEngine;
 public class StartFadeOut : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private GameObject UIObject;
     
     private bool _isFading;
-    
     private float _fadeDuration = 1f;
-    
     private float _timer;
+    
     void Start()
     {
         Time.timeScale = 0f;
@@ -20,7 +20,6 @@ public class StartFadeOut : MonoBehaviour
     {
         if (_isFading)
         {
-            Debug.Log("페이딩 시작" );
             _timer += Time.unscaledDeltaTime;
 
             float alpha = Mathf.Lerp(1f, 0f, _timer / _fadeDuration);
@@ -30,7 +29,8 @@ public class StartFadeOut : MonoBehaviour
             if (alpha <= 0f)
             {
                 _isFading = false;
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false); 
+                UIObject.SetActive(true);
                 Time.timeScale = 1f;
             }
         }

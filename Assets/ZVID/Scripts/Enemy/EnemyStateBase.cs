@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EnemyStateBase : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public abstract class EnemyStateBase : MonoBehaviour
     protected Enemy enemy { get; private set; }
     protected SpriteRenderer spriteRenderer { get; private set; }
     protected Rigidbody2D rb { get; private set; }
+    protected NavMeshAgent agent { get; private set; }
+    protected Collider2D collider { get; private set; }
 
     protected virtual void Awake()
     {
@@ -15,5 +18,7 @@ public abstract class EnemyStateBase : MonoBehaviour
         enemy = GetComponent<Enemy>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+        collider = GetComponent<Collider2D>();
     }
 }

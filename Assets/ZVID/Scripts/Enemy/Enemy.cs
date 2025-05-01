@@ -47,9 +47,7 @@ public class Enemy : MonoBehaviour
     
     public void TakeDamage(int damage)
     {
-        Debug.Log($"hp: {_data.Hp} - damage: {damage}");
         _data.Hp -= damage;
-        Debug.Log(_data.Hp);
         
         if (_data.Hp <= 0)
         {

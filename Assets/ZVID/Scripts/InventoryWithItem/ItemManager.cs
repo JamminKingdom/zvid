@@ -12,6 +12,7 @@ public class ItemManager : MonoBehaviour
     public player_wataer wataer;
     public player_Hunger hunger;
     public player_stebba statebar;
+    public player_Disease disease;
     
     private InventoryData dragData;
     private InventoryData dropData;
@@ -103,10 +104,8 @@ public class ItemManager : MonoBehaviour
         }
         else if ((int)type == 6)
         {
-            //질병관련 아이템 사용
+            disease.CureDisease();
         }
-        
-
     }
 
     public int presentType(int index)

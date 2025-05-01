@@ -14,12 +14,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Item
+  - Buildings
   - Player
   - Enemy
   - Projectile
-  - 
+  - Bullet
   - 
   - 
   - 

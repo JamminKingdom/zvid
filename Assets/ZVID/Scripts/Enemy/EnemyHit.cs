@@ -20,6 +20,6 @@ public class EnemyHit : EnemyStateBase
         
         yield return new WaitForSeconds(0.5f);
 
-        enemy.SetState(enemy.idleState);
+        enemy.SetState(enemy.chaseState);
     }
 }

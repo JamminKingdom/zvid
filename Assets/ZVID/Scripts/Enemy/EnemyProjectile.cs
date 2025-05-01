@@ -10,14 +10,14 @@ public class EnemyProjectile : MonoBehaviour
     private Rigidbody2D _rb;
     private LayerMask targetLayers;
 
-    private player_stebba playerHealth; //
+    private player_stebba playerHealth;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         targetLayers = LayerMask.NameToLayer("Player");
-        
-        playerHealth = FindObjectOfType<player_stebba>(); //
+
+        playerHealth = Player.Instance.stebba;
     }
     
     public void Shot(int damage, Vector2 direction)
@@ -33,9 +33,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (other.gameObject.layer == targetLayers)
         {
-            //Player TakeDamage
             playerHealth.TakeDamage(_damage);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }

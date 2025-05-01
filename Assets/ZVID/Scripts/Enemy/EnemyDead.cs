@@ -19,10 +19,12 @@ public class EnemyDead : EnemyStateBase
         anim.SetTrigger(data.HashDead);
         
         rb.simulated = false;
+        collider.enabled = false;
         
         yield return new WaitForSeconds(2f);
         
         SpawnManager.Instance.SpawnRandomItem(transform);
+        GameManager.Instance.AddKillCount();
         Destroy(gameObject);
     }
 }

@@ -11,8 +11,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        sec += Time.deltaTime; //테스트 코드 => 아래 TimeManager가 실행되고있는 환경에서 실행 필요
-        // sec = TimeManager.Instance.ElapsedTime;
+        sec += Time.deltaTime;
         
         if (sec >= 60)
         {

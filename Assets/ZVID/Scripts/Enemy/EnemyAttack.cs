@@ -7,16 +7,34 @@ public class EnemyAttack : EnemyStateBase
     private GameObject shootingPoint;
     [SerializeField]
     private GameObject projectilePrefab;
+    
+    private Coroutine attackCoroutine;
 
     private void OnEnable()
     {
+        agent.isStopped = true;
+        
+        if (agent.isOnNavMesh)
+            agent.ResetPath();
+
+        anim.SetBool(data.HashIsWalking, false);
+        
         Attack();
+    }
+    
+    private void OnDisable()
+    {
+        if (agent.isOnNavMesh)
+            agent.isStopped = false;
+        
+        if (attackCoroutine != null)
+            StopCoroutine(attackCoroutine);
     }
     
     private void Attack()
     {
         StopAllCoroutines();
-        StartCoroutine(AttackProcess());
+        attackCoroutine = StartCoroutine(AttackProcess());
     }
     
     private IEnumerator AttackProcess()
@@ -27,7 +45,7 @@ public class EnemyAttack : EnemyStateBase
         
         yield return new WaitForSeconds(2f);
         
-        enemy.SetState(enemy.idleState);
+        enemy.SetState(enemy.chaseState);
     }
     
     private void FireProjectile()

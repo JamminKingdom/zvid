@@ -19,7 +19,9 @@ public class EnemyChase : EnemyStateBase
     {
         anim.SetBool(data.HashIsWalking, data.isWalking);
         _agent.isStopped = false;
-        _agent.ResetPath();
+        
+        if (_agent.isOnNavMesh)
+            _agent.ResetPath();
     }
     
     
@@ -40,7 +42,9 @@ public class EnemyChase : EnemyStateBase
     private void OnDisable()
     {
         _agent.isStopped = true;
-        _agent.ResetPath();
+        
+        if (_agent.isOnNavMesh)
+            _agent.ResetPath();
     }
 
     private void UpdateDestination()

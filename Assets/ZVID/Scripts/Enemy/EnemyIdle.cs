@@ -5,7 +5,6 @@ using System.Collections;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyIdle : EnemyStateBase
 {
-    [Header("Wander Settings")]
     [SerializeField] private float wanderRadius   = 5f;
     [SerializeField] private float wanderInterval = 7f;
 
@@ -29,12 +28,14 @@ public class EnemyIdle : EnemyStateBase
     {
         if (_wanderRoutine != null)
             StopCoroutine(_wanderRoutine);
-        _agent.ResetPath();
+        
+        if (_agent.isOnNavMesh)
+            _agent.ResetPath();
     }
 
     private void Wander()
     {
-        StartCoroutine(WanderRoutine());
+        _wanderRoutine = StartCoroutine(WanderRoutine());
     }
 
     private IEnumerator WanderRoutine()
