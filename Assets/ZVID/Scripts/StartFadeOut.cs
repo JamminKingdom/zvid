@@ -14,6 +14,7 @@ public class StartFadeOut : MonoBehaviour
         Time.timeScale = 0f;
         _isFading = false;
         canvasGroup.alpha = 1f;
+        canvasGroup.interactable = canvasGroup.blocksRaycasts = true;
     }
 
     void Update()
@@ -28,8 +29,10 @@ public class StartFadeOut : MonoBehaviour
 
             if (alpha <= 0f)
             {
+                canvasGroup.interactable = canvasGroup.blocksRaycasts = false;
+
                 _isFading = false;
-                gameObject.SetActive(false); 
+                gameObject.SetActive(false);
                 UIObject.SetActive(true);
                 Time.timeScale = 1f;
             }
@@ -39,6 +42,7 @@ public class StartFadeOut : MonoBehaviour
     public void StartFadeIn()
     {
        _isFading = true;
+       AudioManager.Instance.PlaySFX(SFXType.StartButton);
     }
     
 }

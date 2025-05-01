@@ -113,6 +113,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         
         ResetPosition();
         canvas.sortingOrder = OriginSortOrder;
+        AudioManager.Instance.PlaySFX(SFXType.DragDropError);
         // Debug.Log("드래그 끝");
     }
 
@@ -137,7 +138,6 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         draggingSlot.ResetPosition();
         Open();
         canvas.sortingOrder = OriginSortOrder;
-        Debug.Log("드롭실행");
     }
 
     #endregion

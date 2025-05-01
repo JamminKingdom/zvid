@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
+        if (EventSystem.current &&
+            EventSystem.current.IsPointerOverGameObject())
+            return;
+        
         if (Input.GetMouseButtonDown(0) && !isAttack)
         {
             isAttack = true;

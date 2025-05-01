@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4559935c00ef8e94b846e2e03e39f0d0
+guid: 9669960e415ea604d81fb0784634df79
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
@@ -22,8 +22,8 @@ AudioImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 238068
-  packageName: Undead Survivor Assets Pack
-  packageVersion: 1.3
-  assetPath: Assets/player/Undead Survivor/Audio/BGM.wav
-  uploadId: 633846
+  productId: 173560
+  packageName: Arcade Game BGM #3
+  packageVersion: 1.0
+  assetPath: Assets/ArcadeGameBGM#3/ArcadeGameBGM#3_Loop.wav
+  uploadId: 375767

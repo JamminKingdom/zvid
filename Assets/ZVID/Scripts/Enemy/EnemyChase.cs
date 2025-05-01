@@ -18,9 +18,10 @@ public class EnemyChase : EnemyStateBase
     private void OnEnable()
     {
         anim.SetBool(data.HashIsWalking, data.isWalking);
-        _agent.isStopped = false;
+        if (!_agent.enabled && _agent.isOnNavMesh)
+            _agent.isStopped = false;
         
-        if (_agent.isOnNavMesh)
+        if (!_agent.enabled && _agent.isOnNavMesh)
             _agent.ResetPath();
     }
     
@@ -41,15 +42,17 @@ public class EnemyChase : EnemyStateBase
     
     private void OnDisable()
     {
-        _agent.isStopped = true;
+        if (!_agent.enabled && _agent.isOnNavMesh)
+            _agent.isStopped = true;
         
-        if (_agent.isOnNavMesh)
+        if (!_agent.enabled && _agent.isOnNavMesh)
             _agent.ResetPath();
     }
 
     private void UpdateDestination()
     {
-        _agent.SetDestination(Player.Instance.transform.position);
+        if (!_agent.enabled && _agent.isOnNavMesh)
+            _agent.SetDestination(Player.Instance.transform.position);
         spriteRenderer.flipX = data.dirVec.x < 0f;
     }
 }

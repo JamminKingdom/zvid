@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     [SerializeField] private List<AudioClip> clips;
+    [SerializeField] private AudioClip startBGM;
     [SerializeField] private AudioClip BGM;
     
     private AudioSource audioSource;
@@ -29,23 +30,25 @@ public class AudioManager : MonoBehaviour
         PlayBGM();
     }
     
-    public void OnStop()
-    {
-        StopBGM();
-    }
-
-    public void PlayBGM()
+    public void PlayBGM(int flag = 0)
     {
         audioSource = GetAvailableSFXSource();
 
-        audioSource.clip = BGM;
-        audioSource.volume = 0.4f;
+        if (flag == 0)
+        {
+            audioSource.clip = startBGM;
+            audioSource.volume = 0.4f;
+        }
+        else
+        {
+            audioSource.clip = BGM;
+        }
+        
         audioSource.Play();
     }
 
     public void StopBGM()
     {
-        PlaySFX(SFXType.StartButton);
         StartCoroutine(StopBGMCoroutine());
     }
     
@@ -57,6 +60,18 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         audioSource.Stop();
+    }
+    
+    public void StopAndPlayBGM(int flag)
+    {
+        StartCoroutine(StopAndPlayBGMCoroutine(flag));
+    }
+    
+    private IEnumerator StopAndPlayBGMCoroutine(int flag)
+    {
+        yield return StopBGMCoroutine();
+
+        PlayBGM(flag);
     }
     
     public void PlaySFX(SFXType type)

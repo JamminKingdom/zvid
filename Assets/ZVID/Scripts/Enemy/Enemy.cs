@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     {
         idleState = GetComponent<EnemyIdle>();
         chaseState = GetComponent<EnemyChase>();
-        attackState = GetComponent<EnemyAttack>();
+        // attackState = GetComponent<EnemyAttack>();
         hitState = GetComponent<EnemyHit>();
         deadState = GetComponent<EnemyDead>();
         
@@ -56,6 +56,14 @@ public class Enemy : MonoBehaviour
         else
         {
             SetState(hitState);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Player.Instance.stebba.TakeDamage(_data.attackDamage);
         }
     }
 }

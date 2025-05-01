@@ -14,6 +14,9 @@ public class player_Disease : MonoBehaviour
 
     public void GetDisease()
     {
+        if (isSick)
+            return;
+        
         isSick = true;
         _image.enabled = true;
         AudioManager.Instance.PlaySFX(SFXType.GetDisease);

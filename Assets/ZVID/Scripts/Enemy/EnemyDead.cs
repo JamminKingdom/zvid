@@ -16,6 +16,12 @@ public class EnemyDead : EnemyStateBase
     
     private IEnumerator DeadProcess()
     {
+        // agent.isStopped = true;
+        // if (agent.isOnNavMesh)
+        //     agent.ResetPath();
+
+        agent.enabled = false;
+        
         anim.SetTrigger(data.HashDead);
         AudioManager.Instance.PlaySFX(SFXType.EnemyDead);
         

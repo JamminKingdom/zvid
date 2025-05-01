@@ -44,6 +44,7 @@ public class InventoryUi : MonoBehaviour
     {
         inventoryOpen = false;
         canvasgroup.alpha = 0f;
+        canvasgroup.interactable = canvasgroup.blocksRaycasts = false;
         
         originalPosition = bar.transform.localPosition;
         position = new Vector3(320f, 155f, 0f);
@@ -60,6 +61,8 @@ public class InventoryUi : MonoBehaviour
                 bar.transform.localPosition = position;
                 
                 canvasgroup.alpha = 1f;
+                canvasgroup.interactable = canvasgroup.blocksRaycasts = true;
+
                 currentTime = Time.timeScale;
                 Time.timeScale = 0f;
                 inventoryOpen = true;
@@ -69,6 +72,8 @@ public class InventoryUi : MonoBehaviour
             bar.transform.localPosition = originalPosition;
             
             canvasgroup.alpha = 0f;
+            canvasgroup.interactable = canvasgroup.blocksRaycasts = false;
+
             Time.timeScale = currentTime;
             inventoryOpen = false;
         }

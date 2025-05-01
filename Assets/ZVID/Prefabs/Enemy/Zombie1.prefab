@@ -143,8 +143,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 1000000
+  m_AngularDamping: 1000000
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -255,7 +255,7 @@ MonoBehaviour:
   attackState: {fileID: -575717040626833407}
   hitState: {fileID: -5712633112797795163}
   deadState: {fileID: -3950198021326158095}
-  _data: {fileID: 0}
+  _data: {fileID: 4812895517008515985}
 --- !u!114 &4812895517008515985
 MonoBehaviour:
   m_ObjectHideFlags: 0

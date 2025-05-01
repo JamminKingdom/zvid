@@ -12,4 +12,5 @@ public enum SFXType
     DragDropSuccess,
     DragDropError,
     StartButton,
+    PlayerDead,
 }

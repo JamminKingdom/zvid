@@ -75,6 +75,8 @@ public class player_stebba : MonoBehaviour
 
     private void Die()
     {
+        AudioManager.Instance.StopBGM();
+        AudioManager.Instance.PlaySFX(SFXType.PlayerDead);
         isDead = true;
         ui.SetActive(false);
         over.over();

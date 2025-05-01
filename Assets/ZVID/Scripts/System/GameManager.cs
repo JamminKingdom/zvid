@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI text; 
     
     public static GameManager Instance { get; private set; }
-    private int killCnt = 0;
+    public int killCnt = 0;
 
     private void Awake()
     {
@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
     public void AddKillCount()
     {
         text.text = $"Kill: {++killCnt}";
+    }
+    
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
 }

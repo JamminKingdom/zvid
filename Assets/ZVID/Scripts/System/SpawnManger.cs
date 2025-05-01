@@ -10,7 +10,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private Tilemap groundTilemap;
     [SerializeField] private Tilemap obstacleTilemap;
     
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject zombiePrefab;
+    [SerializeField] private GameObject skeletonPrefab;
     [SerializeField] private GameObject itemPrefab;
     
     [SerializeField] private float initialSpawnTime = 5f;
@@ -76,7 +77,11 @@ public class SpawnManager : MonoBehaviour
         var cell = _validCells[Random.Range(0, _validCells.Count)];
         var worldPos = groundTilemap.CellToWorld(cell) + groundTilemap.cellSize * 0.5f;
 
-        GameObject go = Instantiate(enemyPrefab, worldPos, Quaternion.identity);
+        GameObject chosenPrefab = (Random.value < 0.5f)
+            ? zombiePrefab
+            : skeletonPrefab;
+
+        GameObject go = Instantiate(chosenPrefab, worldPos, Quaternion.identity);
 
         go.GetComponent<EnemyData>().target = Player.Instance.transform;
     }
