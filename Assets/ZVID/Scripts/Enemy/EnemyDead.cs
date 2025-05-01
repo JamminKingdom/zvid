@@ -17,6 +17,7 @@ public class EnemyDead : EnemyStateBase
     private IEnumerator DeadProcess()
     {
         anim.SetTrigger(data.HashDead);
+        AudioManager.Instance.PlaySFX(SFXType.EnemyDead);
         
         rb.simulated = false;
         collider.enabled = false;

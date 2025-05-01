@@ -17,6 +17,7 @@ public class EnemyHit : EnemyStateBase
     private IEnumerator HitProcess()
     {
         anim.SetTrigger(data.HashHit);
+        AudioManager.Instance.PlaySFX(SFXType.EnemyHit);
         
         yield return new WaitForSeconds(0.5f);
 

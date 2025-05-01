@@ -7,9 +7,13 @@ public class Gameover : MonoBehaviour
     private Coroutine fadeCoroutine;
     private float fadeDuration = 1f;
 
-    private void Start()
+    private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    private void Start()
+    {
         canvasGroup.alpha = 0f;
     }
 

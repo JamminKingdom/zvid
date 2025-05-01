@@ -22,6 +22,7 @@ public class ItemObject : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             ItemManager.Instance.Add(_itemType);
+            AudioManager.Instance.PlaySFX(SFXType.ItemPickup);
             Destroy(gameObject);
         }
     }

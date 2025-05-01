@@ -51,25 +51,26 @@ public class InventoryUi : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && !inventoryOpen)
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            bar.transform.localPosition = position;
+            AudioManager.Instance.PlaySFX(SFXType.Inventory);
             
-            canvasgroup.alpha = 1f;
-            currentTime = Time.timeScale;
-            Time.timeScale = 0f;
-            inventoryOpen = true;
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.I) && inventoryOpen)
-        {
+            if (!inventoryOpen)
+            {
+                bar.transform.localPosition = position;
+                
+                canvasgroup.alpha = 1f;
+                currentTime = Time.timeScale;
+                Time.timeScale = 0f;
+                inventoryOpen = true;
+                return;
+            }
+            
             bar.transform.localPosition = originalPosition;
             
             canvasgroup.alpha = 0f;
             Time.timeScale = currentTime;
             inventoryOpen = false;
-            return;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && inventoryOpen && Slot.isSelected)

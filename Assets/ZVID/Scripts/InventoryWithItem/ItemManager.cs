@@ -73,6 +73,7 @@ public class ItemManager : MonoBehaviour
         itemList[index].amount--;
         
         UseItem(itemList[index].type);
+        AudioManager.Instance.PlaySFX(SFXType.ItemUse);
         
         inventory.ItemLook(itemList[index].type, itemList[index].amount, itemList[index].index);
 

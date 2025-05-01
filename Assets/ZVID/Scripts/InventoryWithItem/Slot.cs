@@ -48,6 +48,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             image.color = new Color(1f, 1f, 1f, 1f);
             isSelected = true;
             slot = this; 
+            AudioManager.Instance.PlaySFX(SFXType.ItemSelect);
         }
     }
 

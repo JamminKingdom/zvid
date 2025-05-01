@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         {
             isAttack = true;
             
+            AudioManager.Instance.PlaySFX(SFXType.PlayerAttack);
             GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Projectile projectile = bulletGO.GetComponent<Projectile>();
             
@@ -122,6 +123,7 @@ public class Player : MonoBehaviour
         isHit = true;
         Color temp = sp.color;
         sp.color = new Color(0.74f, 0.41f, 0.41f);
+        AudioManager.Instance.PlaySFX(SFXType.PlayerHit);
 
         yield return new WaitForSeconds(0.5f);
 

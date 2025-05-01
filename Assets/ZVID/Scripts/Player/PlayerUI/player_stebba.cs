@@ -8,8 +8,6 @@ public class player_stebba : MonoBehaviour
     [HideInInspector] public float Stebba = 100f;
 
     public Image StebbaFillImage;
-    
-    [SerializeField] private float smoothSpeed = 3f;
 
     private float displayFill;
     private bool isDead;
